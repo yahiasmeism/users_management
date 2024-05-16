@@ -30,13 +30,15 @@ class FiltersDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       icon: const Icon(Icons.sort),
-      onPressed: () {
-        showDialog(
+      onPressed: () async {
+        await showDialog(
           context: context,
           builder: (context) {
             return filterAlertDialog(context);
           },
         );
+        // ignore: use_build_context_synchronously
+        BlocProvider.of<UsersCubit>(context).loadedUsers();
       },
     );
   }
