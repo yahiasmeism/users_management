@@ -10,19 +10,26 @@ class ShimmerLoadingList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
       baseColor: Constants.PRIMARY_COLOR[50]!,
-      highlightColor: Constants.PRIMARY_COLOR[200]!,
-      child: ListView.builder(
-        physics: const BouncingScrollPhysics(),
-        itemCount: 15,
-        itemBuilder: (context, index) {
-          return Container(
-            padding: const EdgeInsets.all(10),
-            margin: const EdgeInsets.only(top: 10),
-            decoration: BoxDecoration(
-                color: Colors.black87, borderRadius: BorderRadius.circular(12)),
-            child: const ListTile(),
-          );
-        },
+      highlightColor: Constants.PRIMARY_COLOR[100]!,
+      child: Padding(
+        padding: const EdgeInsets.all(5),
+        child: ListView.separated(
+          separatorBuilder: (context, index) => const Divider(
+            height: 3,
+            // color: Colors.black,
+          ),
+          physics: const BouncingScrollPhysics(),
+          itemCount: 12,
+          itemBuilder: (context, index) {
+            return Container(
+              padding: const EdgeInsets.all(14),
+              decoration: const BoxDecoration(
+                color: Constants.PRIMARY_COLOR,
+              ),
+              child: const ListTile(),
+            );
+          },
+        ),
       ),
     );
   }

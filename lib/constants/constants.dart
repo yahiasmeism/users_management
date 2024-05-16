@@ -6,5 +6,5 @@ class Constants {
   static const String USERS_BOX = "usersBox";
   static const String IMAGES_BOX = "imagesBox";
   static const String USER_API = "https://dummyjson.com/users";
-  static const MaterialColor PRIMARY_COLOR = Colors.blue;
+  static const MaterialColor PRIMARY_COLOR = Colors.deepPurple;
 }

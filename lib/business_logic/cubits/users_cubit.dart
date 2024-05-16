@@ -47,6 +47,8 @@ class UsersCubit extends Cubit<UsersState> {
     emit(LoadedUsersState());
   }
 
+
+ /// filter data with fiels
   filter({int? age, String? gender, int? birthYear}) {
     if (age != null) {
       usersFilter = usersFilter.where((user) => user.age == age).toList();
@@ -67,7 +69,7 @@ class UsersCubit extends Cubit<UsersState> {
       emit(LoadedUsersState());
     }
   }
-
+  /// seach data with query
   search(String query) {
     // Exucute Query from All User
     usersFilter = users.where((user) {

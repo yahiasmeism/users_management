@@ -10,28 +10,25 @@ class UserImage extends StatelessWidget {
   final UserModel user;
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 70,
-      height: 70,
-      child: CircleAvatar(
-        backgroundColor: Constants.PRIMARY_COLOR[100],
-        child: FutureBuilder(
-          future: ImageCacheManager.getImagePath(user.image),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.done &&
-                snapshot.hasData) {
-              final imagePath = snapshot.data!;
-              return Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: Image.file(imagePath),
-              );
-            } else if (snapshot.hasError) {
-              return const Icon(Icons.person);
-            } else {
-              return const ShimmerLoadingImage();
-            }
-          },
-        ),
+    return CircleAvatar(
+      radius: 30,
+      backgroundColor: Constants.PRIMARY_COLOR[100],
+      child: FutureBuilder(
+        future: ImageCacheManager.getImagePath(user.image),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done &&
+              snapshot.hasData) {
+            final imagePath = snapshot.data!;
+            return Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Image.file(imagePath),
+            );
+          } else if (snapshot.hasError) {
+            return const Icon(Icons.person);
+          } else {
+            return const ShimmerLoadingImage();
+          }
+        },
       ),
     );
   }

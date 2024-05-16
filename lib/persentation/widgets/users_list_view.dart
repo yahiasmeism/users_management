@@ -7,16 +7,19 @@ class UsersListView extends StatelessWidget {
   final List<UserModel> users;
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      separatorBuilder: (context, index) => const Divider(
-        thickness: 1,
-        indent: 105,
+    return Padding(
+      padding: const EdgeInsets.all(4.0),
+      child: ListView.separated(
+        separatorBuilder: (context, index) => const Divider(
+          thickness: 1,
+          indent: 90,
+        ),
+        physics: const BouncingScrollPhysics(),
+        itemCount: users.length,
+        itemBuilder: (context, index) {
+          return UserTile(user: users[index]);
+        },
       ),
-      physics: const BouncingScrollPhysics(),
-      itemCount: users.length,
-      itemBuilder: (context, index) {
-        return UserTile(user: users[index]);
-      },
     );
   }
 }

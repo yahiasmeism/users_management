@@ -8,10 +8,11 @@ class ShimmerLoadingImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-        baseColor: Constants.PRIMARY_COLOR[50]!,
-        highlightColor: Constants.PRIMARY_COLOR[500]!,
-        child: const CircleAvatar(
-          radius: 25,
-        ));
+      baseColor: Constants.PRIMARY_COLOR[50]!,
+      highlightColor: Constants.PRIMARY_COLOR[200]!,
+      child: const CircleAvatar(
+        radius: 30,
+      ),
+    );
   }
 }

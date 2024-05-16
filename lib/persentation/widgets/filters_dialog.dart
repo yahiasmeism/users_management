@@ -65,11 +65,11 @@ class FiltersDialog extends StatelessWidget {
           ),
           customDropDownMenu(
             initialSelection: filterByBirthYear,
-            title: 'BirthYear',
+            title: 'Birth year',
             onSelected: (birthYearOption) {
               filterByBirthYear = birthYearOption;
             },
-            dropdownMenuEntries: ageOptions,
+            dropdownMenuEntries: birthYearOptions,
           ),
         ],
       ),
