@@ -27,4 +27,12 @@ class HiveService {
     // store new data
     await usersBox.put(user.id, user);
   }
+
+  static Future<void> clearUsers() async {
+    Box<UserModel> usersBox = await Hive.openBox(Constants.USERS_BOX);
+    // check before clear
+    if (usersBox.isNotEmpty) {
+      await usersBox.clear();
+    }
+  }
 }

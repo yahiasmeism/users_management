@@ -24,6 +24,11 @@ class UsersCubit extends Cubit<UsersState> {
         // fetch users from api
         users = await UsersApi.getUsers();
 
+        if (users.isNotEmpty) {
+          // clear old data if internet connection is available
+          HiveService.clearUsers();
+        }
+
         // Store users with profile image in Local
         for (var user in users) {
           await HiveService.storeUsers(user: user);
@@ -43,12 +48,7 @@ class UsersCubit extends Cubit<UsersState> {
     }
   }
 
-  loadedUsers() {
-    emit(LoadedUsersState());
-  }
-
-
- /// filter data with fiels
+  /// filter data with fiels
   filter({int? age, String? gender, int? birthYear}) {
     if (age != null) {
       usersFilter = usersFilter.where((user) => user.age == age).toList();
@@ -69,6 +69,7 @@ class UsersCubit extends Cubit<UsersState> {
       emit(LoadedUsersState());
     }
   }
+
   /// seach data with query
   search(String query) {
     // Exucute Query from All User
@@ -83,5 +84,9 @@ class UsersCubit extends Cubit<UsersState> {
           lastName.startsWith(query) |
           ('$firstName $lastName').startsWith(query);
     }).toList();
+  }
+
+  loadedUsers() {
+    emit(LoadedUsersState());
   }
 }
